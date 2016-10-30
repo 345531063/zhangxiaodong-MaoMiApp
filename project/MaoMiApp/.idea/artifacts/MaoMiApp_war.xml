@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="MaoMiApp:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="MaoMiApp.war">
+      <element id="artifact" artifact-name="MaoMiApp:war exploded" />
+    </root>
+  </artifact>
+</component>

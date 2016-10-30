@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:aop="http://www.springframework.org/schema/aop" 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-4.1.xsd 
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd 
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-4.1.xsd 
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd 
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+         
+    <context:component-scan base-package="cn.com.yibin.maomi"  use-default-filters="false" >
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+        <context:exclude-filter type="regex" expression=".core.*" />
+        <context:exclude-filter type="regex" expression=".cache.*" />
+    </context:component-scan>    
+    <mvc:annotation-driven >
+         <!-- 消息转换器 -->
+    <!-- 消息转换器 -->
+    <mvc:message-converters register-defaults="true">
+      <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+        <property name="supportedMediaTypes" value="text/html;charset=UTF-8"/>
+      </bean>
+    </mvc:message-converters>
+  </mvc:annotation-driven>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass"
+            value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+</beans>

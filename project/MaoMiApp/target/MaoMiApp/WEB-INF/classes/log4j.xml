@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">  
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>  
+      
+    <appender name="Console" class="org.apache.log4j.ConsoleAppender">  
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern"  
+                value="%d{yyyy/MM/dd HH:mm:ss.sss} [%-5p] %c - %m%n"/>  
+        </layout>  
+    </appender>  
+      
+    <appender name="traceLog4Debug" class="org.apache.log4j.DailyRollingFileAppender">  
+        <param name="File" value="E:/systemLogs/traceLog4Debug/traceLog4Debug.log"/>  
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true"/>  
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern"  
+                value="%d{yyyy/MM/dd HH:mm:ss.sss} [%-5p] %c - %m%n"/>  
+        </layout>  
+    </appender>  
+    
+    <appender name="debugLog" class="org.apache.log4j.DailyRollingFileAppender">  
+        <param name="File" value="E:/systemLogs/debug/debug.log"/>  
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true"/> 
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern"  
+                value="%d{yyyy/MM/dd HH:mm:ss.sss} [%-5p] %c - %m%n"/>  
+        </layout>  
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">  
+            <param name="LevelMax" value="DEBUG" />  
+            <param name="LevelMin" value="DEBUG" />  
+        </filter>
+    </appender>  
+      
+    <appender name="infoLog" class="org.apache.log4j.DailyRollingFileAppender">  
+        <param name="File" value="E:/systemLogs/info/info.log"/>  
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true"/>  
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern"  
+                value="%d{yyyy/MM/dd HH:mm:ss.sss} [%-5p] %c - %m%n"/>  
+        </layout>  
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">  
+                    <param name="LevelMax" value="INFO" />  
+                    <param name="LevelMin" value="INFO" />  
+        </filter>  
+    </appender>  
+      
+    <appender name="warnLog" class="org.apache.log4j.DailyRollingFileAppender">  
+        <param name="File" value="E:/systemLogs/warn/warn.log"/>  
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true"/> 
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern"  
+                value="%d{yyyy/MM/dd HH:mm:ss.sss} [%-5p] %c - %m%n"/>  
+        </layout>  
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">  
+                    <param name="LevelMax" value="WARN" />  
+                    <param name="LevelMin" value="WARN" />  
+            </filter>  
+    </appender>  
+      
+    <appender name="errorLog" class="org.apache.log4j.DailyRollingFileAppender">  
+        <param name="File" value="E:/systemLogs/error/error.log"/>  
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern"  
+                value="%d{yyyy/MM/dd HH:mm:ss.sss} [%-5p] %c - %m%n"/>  
+        </layout>  
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">  
+                    <param name="LevelMax" value="ERROR" />  
+                    <param name="LevelMin" value="ERROR" />  
+            </filter>  
+    </appender>  
+    
+    <appender name="fatalLog" class="org.apache.log4j.DailyRollingFileAppender">  
+        <param name="File" value="E:/systemLogs/fatal/fatal.log"/>  
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern"  
+                value="%d{yyyy/MM/dd HH:mm:ss.sss} [%-5p] %c - %m%n"/>  
+        </layout>  
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">  
+                    <param name="LevelMax" value="FATAL" />  
+                    <param name="LevelMin" value="FATAL" />  
+        </filter>  
+    </appender>  
+     <logger name="cn.com.yibin.maomi.mybatis" additivity="true">
+    	<level value="DEBUG" />
+    </logger>
+ <logger name="java.sql.Connection" additivity="true">
+  <level value="DEBUG" />
+ </logger>
+ <logger name="java.sql.Statement" additivity="true">
+  <level value="DEBUG" />
+ </logger>
+ <logger name="java.sql.PreparedStatement" additivity="true">
+  <level value="DEBUG" />
+ </logger>
+ <logger name="java.sql.ResultSet" additivity="true">
+  <level value="DEBUG" />
+ </logger>
+    <!-- 记录该包下所有日志 -->  
+     <root>  
+        <level value="INFO"/>  
+        <!--
+        <appender-ref ref="traceLog4Debug"/>  
+        <appender-ref ref="debugLog"/>
+        -->    
+        <appender-ref ref="Console"/>
+        <appender-ref ref="infoLog"/>  
+        <appender-ref ref="warnLog"/>  
+        <appender-ref ref="errorLog"/>  
+        <appender-ref ref="fatalLog"/>  
+    </root> 
+     <!--
+    <logger name="com">  
+        <level value="ALL"/>  
+        <appender-ref ref="stdout"/>  
+        <appender-ref ref="traceLog4Debug"/>  
+        <appender-ref ref="debugLog"/>  
+        <appender-ref ref="infoLog"/>  
+        <appender-ref ref="warnLog"/>  
+        <appender-ref ref="errorLog"/>  
+        <appender-ref ref="fatalLog"/>  
+    </logger>  
+  
+    <logger name="org.hibernate.SQL">  
+        <level value="DEBUG"/>  
+        <appender-ref ref="traceLog4Debug"/>  
+        <appender-ref ref="stdout"/>  
+    </logger>  
+      
+    <logger name="org.hibernate">  
+        <level value="error"/>  
+        <appender-ref ref="traceLog4Debug"/>  
+        <appender-ref ref="stdout"/>  
+    </logger>  
+   
+    <logger name="java.sql.Connection">  
+        <level value="debug"/>  
+        <appender-ref ref="stdout"/>  
+    </logger>  
+    <logger name="java.sql.PreparedStatement">  
+        <level value="debug"/>  
+        <appender-ref ref="stdout"/>  
+    </logger>  
+    -->  
+</log4j:configuration>  
